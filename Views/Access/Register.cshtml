@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+}
+@model User
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Purple Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../Admin/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../Admin/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../Admin/assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../Admin/assets/images/favicon.ico" />
+</head>
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth">
+                <div class="row flex-grow">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auth-form-light text-left p-5">
+                            <div class="brand-logo">
+                                <img src="../../Admin/assets/images/logo.svg">
+                            </div>
+                            <h4>New here?</h4>
+                            <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+                            @using (Html.BeginForm("Register", "Access", FormMethod.Post))
+                            {
+                                <form class="pt-3">
+                                    <div id="error-message" class="alert alert-danger" style="display:none;"></div>
+
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control form-control-lg", type = "email", placeholder = "Email", required = "required", autofocus = "autofocus" })
+                                        @*<input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">*@
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(x => x.FullName, new { @class = "form-control form-control-lg", type = "fullname", placeholder = "FullName", required = "required", autofocus = "autofocus" })
+                                        @*<input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Username"> *@
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control form-control-lg", type = "password", placeholder = "Password", required = "required", autofocus = "autofocus" })
+                                        @*<input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">*@
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="form-check">
+                                            <label class="form-check-label text-muted">
+                                                <input type="checkbox" class="form-check-input"> I agree to all Terms &amp; Conditions <i class="input-helper"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">SIGN UP</button>
+                                    </div>
+                                    <div class="text-center mt-4 font-weight-light">
+                                        Already have an account? <a asp-controller="Access" asp-action="Login" class="text-primary">Login</a>
+                                    </div>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../Admin/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../Admin/assets/js/off-canvas.js"></script>
+    <script src="../../Admin/assets/js/hoverable-collapse.js"></script>
+    <script src="../../Admin/assets/js/misc.js"></script>
+    <!-- endinject -->
+    <script>
+        $(document).ready(function () {
+            $('form').submit(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Register", "Access")',
+                    data: $('form').serialize(),
+                    success: function (response) {
+                        if (response.success) {
+                            window.location.href = response.redirectUrl;
+                        } else {
+                            $('#error-message').html(response.message).show();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

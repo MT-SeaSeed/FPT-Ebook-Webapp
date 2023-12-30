@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\source\\repos\\FPT-Ebook\\FPT-Ebook\\FPT-Ebook.csproj": {}
+    "C:\\Users\\Admin\\source\\repos\\FPT-Ebook-Webapp\\FPT-Ebook.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\source\\repos\\FPT-Ebook\\FPT-Ebook\\FPT-Ebook.csproj": {
+    "C:\\Users\\Admin\\source\\repos\\FPT-Ebook-Webapp\\FPT-Ebook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook\\FPT-Ebook\\FPT-Ebook.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook-Webapp\\FPT-Ebook.csproj",
         "projectName": "FPT-Ebook",
-        "projectPath": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook\\FPT-Ebook\\FPT-Ebook.csproj",
+        "projectPath": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook-Webapp\\FPT-Ebook.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook\\FPT-Ebook\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook-Webapp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,66 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.SqlServer.Server": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            },
+            "X.PagedList": {
+              "target": "Package",
+              "version": "[8.4.7, )"
+            },
+            "X.PagedList.Mvc.Core": {
+              "target": "Package",
+              "version": "[8.4.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

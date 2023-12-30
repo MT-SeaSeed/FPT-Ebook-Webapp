@@ -1,0 +1,11 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model FPT_Ebook.ViewModels.CartModel
+        <div class="humberger__menu__cart">
+            <ul>
+                <li><a asp-controller="Cart" asp-action="Index"><i class="fa fa-shopping-bag"></i> <span>@Model.Quatity</span></a></li>
+            </ul>
+            <div class="header__cart__price">item: <span>$150.00</span></div>
+        </div>

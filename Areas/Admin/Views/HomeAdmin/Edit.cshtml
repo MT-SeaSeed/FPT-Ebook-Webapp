@@ -1,0 +1,74 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model FPT_Ebook.Models.Book
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card-body">
+    <h4 class="card-title">Edit a Book</h4>
+    <form class="forms-sample" method="post" asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="BookId" />
+        <div class="form-group">
+            <label asp-for="Title" class="control-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Author" class="control-label"></label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label">Description</label>
+            <textarea asp-for="Description" class="form-control" id="exampleTextarea1" rows="4"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price" class="control-label"></label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="QuantityInStock" class="control-label"></label>
+            <input asp-for="QuantityInStock" class="form-control" />
+            <span asp-validation-for="QuantityInStock" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryId" class="control-label"></label>
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImagePath" class="control-label"></label>
+            <input asp-for="ImagePath" type="file" class="form-control" onchange="previewImage(this)" />
+            <span asp-validation-for="ImagePath" class="text-danger"></span>
+            <img id="imagePreview" src="~/ProductImages/@Model.ImagePath" alt="Preview Image" style="max-width: 100px; max-height: 100px; margin-top: 10px; display: block;" />
+        </div>
+
+        <button type="submit" class="btn btn-gradient-primary me-2" value="Save">Save</button>
+        <button class="btn btn-light" asp-action="BookList">Cancel</button>
+    </form>
+</div>
+
+<script>
+    function previewImage(input) {
+        var preview = document.getElementById('imagePreview');
+        var file = input.files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+            preview.style.display = 'block';
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+            preview.style.display = 'none';
+        }
+    }
+</script>

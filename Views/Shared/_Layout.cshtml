@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model X.PagedList.PagedList<FPT_Ebook.Models.Book>
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -32,15 +33,9 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="../Layout/img/logo.png" alt=""></a>
+            <a asp-controller="Home" asp-action="Index"><img src="../Layout/img/logo.png" alt=""></a>
         </div>
-        <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
-        </div>
+        @await Component.InvokeAsync("Cart")
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
                 <img src="../Layout/img/language.png" alt="">
@@ -52,8 +47,19 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                @if (Context.Session.GetString("Email") != null)
+                {
+                    <span>
+                        Xin chào, @Context.Session.GetString("Email")
+                    </span>
+                    <a asp-controller="Access" asp-action="Logout">Log Out</a>
+                }
+                else
+                {
+                    <a asp-controller="Access" asp-action="Login">Log In</a>
+                }
             </div>
+
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
@@ -119,7 +125,17 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                @if (Context.Session.GetString("Email") != null)
+                                {
+                                    <span>
+                                        Xin chào, @Context.Session.GetString("Email")
+                                    </span>
+                                    <a asp-controller="Access" asp-action="Logout">Log Out</a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Access" asp-action="Login">Log In</a>
+                                }
                             </div>
                         </div>
                     </div>
@@ -136,7 +152,7 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li class="active"><a asp-controller="Home" asp-action="Index">Home</a></li>
                             <li><a href="./shop-grid.html">Shop</a></li>
                             <li>
                                 <a href="#">Pages</a>
@@ -154,11 +170,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        @await Component.InvokeAsync("Cart")
                     </div>
                 </div>
             </div>
@@ -168,9 +180,34 @@
         </div>
     </header>
     <!-- Header Section End -->
-       <div style="min-height:400px">
-        @RenderBody()
-       </div> 
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                @await Component.InvokeAsync("CategoryMenu")
+                <div class="col-lg-9">
+                    <div class="hero__item set-bg" data-setbg="../layout/img/hero/banner.jpg" style="background-image: url(&quot;img/hero/banner.jpg&quot;);">
+                        <div class="hero__text">
+                            <span>FRUIT FRESH</span>
+                            <h2>Vegetable <br>100% Organic</h2>
+                            <p>Free Pickup and Delivery Available</p>
+                            <a href="#" class="primary-btn">SHOP NOW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                @await Component.InvokeAsync("CategoryFeatured")
+            </div>
+            <div class="row featured__filter" id="displayProducts">
+                @RenderBody()
+            </div>
+        </div>
+    </section>
+
     <!-- Footer Section Begin -->
     <footer class="footer spad">
         <div class="container">
@@ -251,6 +288,7 @@
     <script src="../Layout/js/mixitup.min.js"></script>
     <script src="../Layout/js/owl.carousel.min.js"></script>
     <script src="../Layout/js/main.js"></script>
+
 
 </body>
 </html>

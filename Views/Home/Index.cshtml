@@ -2,3 +2,18 @@
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<Book>
+@foreach (var books in Model)
+{
+    @await Html.PartialAsync("PartialBook", books)
+}
+<div class="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+
+
+
+
+
+

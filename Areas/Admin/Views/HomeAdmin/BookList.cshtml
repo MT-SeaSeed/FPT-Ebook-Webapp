@@ -1,0 +1,85 @@
+﻿@model IEnumerable<FPT_Ebook.Models.Book>
+
+@{
+    ViewData["Title"] = "BookList";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<p>@TempData["Message"]</p>
+<h2>Books List</h2>
+
+<p>
+    <button type="button" class="btn btn-gradient-danger btn-icon-text">
+        <a asp-action="Create" class="mdi mdi-upload btn-icon-prepend">Create New</a>
+    </button>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr class="table-waring">
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantityInStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                Buttom
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantityInStock)
+                </td>
+                <td>
+                    <img src="~/ProductImages/@item.ImagePath" alt="Book Image" style="max-width: 100px; max-height: 100px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
+                    <button class="btn btn-gradient-primary btn-rounded btn-icon">
+                        <a asp-action="Edit" asp-route-BookId="@item.BookId" class="mdi mdi-file-check">
+                        </a>
+                    </button>
+
+                    <button class="btn btn-gradient-danger btn-rounded btn-icon">
+                        <a asp-action="Delete" asp-route-BookId="@item.BookId" onclick="return confirmDelete();" class="mdi mdi-delete">
+                        </a>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
