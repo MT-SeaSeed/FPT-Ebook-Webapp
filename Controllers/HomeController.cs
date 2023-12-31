@@ -27,9 +27,10 @@ namespace FPT_Ebook.Controllers
             PagedList<Book> pagedList = new PagedList<Book>(bookList, pageNumber, pageSize);
             return View(pagedList);
         }
+
         public IActionResult Category(int categoryID, int? page)
         {
-            int pageSize = 8;
+            int pageSize = 2;
             int pageNumber = (page.HasValue && page > 0) ? page.Value : 1;
             var bookList = DBbook.Books.AsNoTracking().Where(x => x.CategoryId == categoryID).OrderBy(x => x.BookId);
             PagedList<Book> pagedList = new PagedList<Book>(bookList, pageNumber, pageSize);

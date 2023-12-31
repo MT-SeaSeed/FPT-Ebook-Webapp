@@ -581,6 +581,18 @@
       "PackagePath": "staticwebassets\\Admin\\partials\\_sidebar.html"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook-Webapp\\wwwroot\\Chatbot\\index.html",
+      "PackagePath": "staticwebassets\\Chatbot\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook-Webapp\\wwwroot\\Chatbot\\script.js",
+      "PackagePath": "staticwebassets\\Chatbot\\script.js"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook-Webapp\\wwwroot\\Chatbot\\style.css",
+      "PackagePath": "staticwebassets\\Chatbot\\style.css"
+    },
+    {
       "Id": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook-Webapp\\wwwroot\\Layout\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\Layout\\css\\bootstrap.min.css"
     },
@@ -779,6 +791,10 @@
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook-Webapp\\wwwroot\\Layout\\img\\hero\\banner.jpg",
       "PackagePath": "staticwebassets\\Layout\\img\\hero\\banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook-Webapp\\wwwroot\\Layout\\img\\hero\\banner1.0.jpg",
+      "PackagePath": "staticwebassets\\Layout\\img\\hero\\banner1.0.jpg"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\FPT-Ebook-Webapp\\wwwroot\\Layout\\img\\language.png",
